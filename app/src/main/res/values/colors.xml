@@ -1,0 +1,5 @@
+<resources>
+    <color name="black">#20242D</color><color name="smoke">#F0F2F5</color>
+    <color name="muted">#626977</color><color name="accent">#4169A8</color>
+    <color name="online">#36A66A</color><color name="offline">#D35C62</color><color name="departed">#DEA93B</color>
+</resources>

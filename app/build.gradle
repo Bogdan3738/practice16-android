@@ -1,0 +1,17 @@
+plugins { id 'com.android.application' }
+android {
+    namespace 'ru.practice.users'
+    compileSdk 35
+    defaultConfig {
+        applicationId 'ru.practice.users'
+        minSdk 23
+        targetSdk 28
+        versionCode 1
+        versionName '1.0'
+        testInstrumentationRunner 'android.test.InstrumentationTestRunner'
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
