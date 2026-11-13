@@ -7,9 +7,16 @@
             <ImageButton android:layout_width="48dp" android:layout_height="48dp" android:src="@drawable/ic_back"
                 android:background="?android:attr/selectableItemBackgroundBorderless" android:contentDescription="@string/back" android:onClick="BackToList" />
             <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="@string/profile" android:textSize="16sp" android:gravity="center" />
+            <ImageButton android:id="@+id/EditButton" android:layout_width="48dp" android:layout_height="48dp"
+                android:src="@drawable/ic_edit" android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/edit" android:onClick="EditUser" />
         </LinearLayout>
-        <TextView android:id="@+id/NameTextView" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="24dp" android:textSize="24sp" android:textColor="@color/black" />
-        <TextView android:id="@+id/StateTextView" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:textSize="14sp" android:textColor="@color/black" />
-        <TextView android:id="@+id/AgeTextView" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:textSize="14sp" android:textColor="@color/black" />
+        <ScrollView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:fillViewport="true">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+        <TextView style="@style/NameText" android:id="@+id/NameTextView" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="24dp" android:textSize="24sp" android:textColor="@color/black" />
+        <TextView style="@style/StateText" android:id="@+id/StateTextView" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:textSize="14sp" android:textColor="@color/black" />
+        <TextView style="@style/BaseContainer" android:id="@+id/AgeTextView" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:textSize="14sp" android:textColor="@color/black" />
+            </LinearLayout>
+        </ScrollView>
     </LinearLayout>
 </FrameLayout>

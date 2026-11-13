@@ -1,6 +1,7 @@
 package ru.practice.users;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
@@ -26,9 +27,9 @@ public class MainActivity extends Activity {
     }
     private void Init() {
         userPanel = findViewById(R.id.userPanel);
-        nameTextView = findViewById(R.id.NameTextView);
-        stateTextView = findViewById(R.id.StateTextView);
-        ageTextView = findViewById(R.id.AgeTextView);
+        nameTextView = userPanel.findViewById(R.id.NameTextView);
+        stateTextView = userPanel.findViewById(R.id.StateTextView);
+        ageTextView = userPanel.findViewById(R.id.AgeTextView);
         ListView listView = findViewById(R.id.listView);
         userListAdapter = new UserListAdapter(this, UserStaticInfo.users);
         listView.setAdapter(userListAdapter);
@@ -49,6 +50,23 @@ public class MainActivity extends Activity {
     public void BackToList(View view) {
         positionActiveUser = -1;
         UserVisibility(false);
+    }
+    public void OpenUserActivity(int position) {
+        Intent intent = new Intent(this, UserActivity.class);
+        intent.putExtra(UserStaticInfo.POSITION_KEY, position);
+        startActivity(intent);
+    }
+    public void EditUser(View view) {
+        if (positionActiveUser >= 0) OpenUserActivity(positionActiveUser);
+    }
+    private void UpdateListAndUserPanel() {
+        userListAdapter.notifyDataSetChanged();
+        if (positionActiveUser >= 0) InitPanel(UserStaticInfo.users.get(positionActiveUser));
+    }
+    @Override protected void onResume() {
+        super.onResume();
+        // Activity сама обновляет свои View: статических ссылок на экран нет.
+        if (userListAdapter != null) UpdateListAndUserPanel();
     }
     @Override protected void onSaveInstanceState(Bundle outState) {
         outState.putInt("selected", positionActiveUser);
